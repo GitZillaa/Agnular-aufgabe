@@ -1,5 +1,13 @@
 import { NgFor } from "@angular/common";
 import { Component } from "@angular/core";
+import { Item } from "./item";
+
+@Component({
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.css']
+})
+
 
 @Component({
   standalone: true,
@@ -20,6 +28,10 @@ export class AppComponent {
     { description: "laugh", done: false },
   ];
   
+  remove(item: Item) {
+    this.allItems.splice(this.allItems.indexOf(item),1);
+  }
+
   addItem(description: string) {
     this.allItems.unshift({
       description,
